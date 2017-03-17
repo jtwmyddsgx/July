@@ -11,8 +11,8 @@ class ExtendedRSSFeed(Rss201rev2Feed):
 
 class RssSiteNewsFeed(Feed):
     feed_type = ExtendedRSSFeed
-    author_name = "安生"
-    title = "安生's Blog | 大好时光！"
+    author_name = "致怀"
+    title = "致怀's Blog | 大好时光！"
     link = "https://blog.ansheng.me/"
     description = "大好时光"
     feed_url = 'https://blog.ansheng.me/rss.xml'
