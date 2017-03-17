@@ -103,7 +103,7 @@ class AboutView(View):
         article.read += 1
         article.save()
         comments = Comment.objects.filter(article=article).order_by('-add_time')
-        url = 'https://' + request.get_host() + request.get_full_path()
+        url = 'https://' + 'blog.tor1024.com' + request.get_full_path()
         reads = Article.objects.all().order_by('-read')[:5]
         try:
             setting = Setting.objects.get(pk=1)

@@ -13,9 +13,9 @@ class RssSiteNewsFeed(Feed):
     feed_type = ExtendedRSSFeed
     author_name = "致怀"
     title = "致怀's Blog | 大好时光！"
-    link = "https://blog.ansheng.me/"
+    link = "http://blog.tor1024.com/"
     description = "大好时光"
-    feed_url = 'https://blog.ansheng.me/rss.xml'
+    feed_url = 'http://blog.tor1024.com'
 
     def items(self):
         return Article.objects.all().order_by('-created_time')
