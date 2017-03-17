@@ -35,7 +35,7 @@ class Article(models.Model):
 
     title = models.CharField(max_length=32, unique=True)
     url = models.CharField(max_length=255, unique=True)
-    description = models.TextField()
+    description = models.TextField().split('___')[0]
     body = models.TextField()
     created_time = models.DateTimeField(auto_now_add=True)
     release_time = models.DateTimeField(default='1970-1-1 00:00:00')
