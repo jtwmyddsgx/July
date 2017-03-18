@@ -129,10 +129,10 @@ class RestPasswordView(View):
                     emailverify = EmailVerifyCode.objects.get(code=code)
                     email = emailverify.email
                     user = UserProfile.objects.get(email=email)
-                    Message.objects.create(body="用户%s于%s修改了密码" % (email, timezone.now()))
                     user.password = make_password(password)
                     user.save()
                     emailverify.delete()
+                    Message.objects.create(body="用户%s于%s修改了密码" % (email, timezone.now()))
                     return HttpResponseRedirect(reverse('login'))
                 else:
                     return HttpResponse('两次密码不一致~')
@@ -148,8 +148,8 @@ class RestPasswordView(View):
                 if newpassword == retypepassword and user:
                     user.password = make_password(newpassword)
                     user.save()
-                    logout(request)
                     Message.objects.create(body="用户%s于%s通过后台修改了密码" % (request.user.email, timezone.now()))
+                    logout(request)
                     return HttpResponseRedirect(reverse('login'))
                 else:
                     return HttpResponse('请确保两次密码相同且旧密码正确~')
