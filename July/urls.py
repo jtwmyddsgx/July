@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+from django.http import HttpResponse
 from users.views import RegisterView, LoginView, LogoutView, PasswordView, RestPasswordView
 from blog.views import *
 
@@ -42,4 +43,5 @@ urlpatterns = [
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     url(r'^rss\.xml$', RssSiteNewsFeed()),
     url(r'^atom\.xml$', AtomSiteNewsFeed()),
+    url(r'^robots.txt', lambda x: HttpResponse("User-Agent: *\nDisallow:", content_type="text/plain"), name="robots_file"),
 ]
