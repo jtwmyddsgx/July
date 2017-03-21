@@ -47,7 +47,7 @@ class ArticleAddView(LoginRequiredMixin, View):
         url = d['url'][0]
         status = d['status'][0]
         editormd = d['editormd-markdown-doc'][0]
-        description = editormd.split('---')[0]
+        description = editormd.split('___')[0]
         try:
             tags = d['tags']
         except KeyError:
