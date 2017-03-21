@@ -45,7 +45,7 @@ class ArticleListView(View):
         links = Link.objects.all()
         categories = Categories.objects.all()
         tags = Tag.objects.all()
-        reads = Article.objects.all().order_by('-read')[:5]
+        reads = Article.objects.filter(status=0).order_by('-read')[:5]
         try:
             setting = Setting.objects.get(pk=1)
         except Setting.DoesNotExist:
@@ -99,7 +99,7 @@ class ReplyView(LoginRequiredMixin, View):
 
 class AboutView(View):
     def get(self, request):
-        article = Article.objects.all().last()
+        article = Article.objects.filter(status=0).last()
         article.read += 1
         article.save()
         comments = Comment.objects.filter(article=article).order_by('-add_time')
