@@ -99,7 +99,7 @@ class ReplyView(LoginRequiredMixin, View):
 
 class AboutView(View):
     def get(self, request):
-        article = Article.objects.filter(status=0).last()
+        article = Article.objects.filter(url='about').last()
         article.read += 1
         article.save()
         comments = Comment.objects.filter(article=article).order_by('-add_time')
