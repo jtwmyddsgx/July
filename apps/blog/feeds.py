@@ -18,7 +18,7 @@ class RssSiteNewsFeed(Feed):
     feed_url = 'http://blog.tor1024.com'
 
     def items(self):
-        return Article.objects.all().order_by('-created_time')
+        return Article.objects.filter(status=0).order_by('-created_time')
 
     def item_title(self, item):
         return item.title
