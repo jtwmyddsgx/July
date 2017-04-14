@@ -245,14 +245,14 @@ class ProfileView(LoginRequiredMixin, View):
         return render(request, 'profile.html')
 
     def post(self, request):
-        image = request.FILES.get('image')
+        # image = request.FILES.get('image')
         nick_name = request.POST.get('nick_name')
         gender = request.POST.get('gender')
         email = request.POST.get('email')
         user = UserProfile.objects.get(pk=request.user.pk)
         flag = False
-        if image:
-            user.image = image
+        # if image:
+        #     user.image = image
         if nick_name and nick_name != user.nick_name:
             user.nick_name = nick_name
         if gender and gender != user.gender:
